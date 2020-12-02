@@ -29,11 +29,8 @@ public class PLayerMovement : MonoBehaviour
     public Transform groundCheck;
 
 
-
     private Vector3 velocity = Vector3.zero;
 
-
-   
         public static PLayerMovement instance;
     private void Awake()
     {

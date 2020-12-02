@@ -24,6 +24,7 @@ public class EnemiPatrol : MonoBehaviour
         {
             distPoint = (distPoint + 1) % waipoint.Length;
             target = waipoint[distPoint];
+
             if (!gameObject.CompareTag("Eagle"))
             {
                 spriteRenderer.flipX = !spriteRenderer.flipX;
