@@ -51,7 +51,6 @@ public class KnightScript : MonoBehaviour
     void Update()
 
     {
-
         //deplacement joueur avec les touches sur l'axe horizontal (fleche direction et/ou Q et D)
         horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.fixedDeltaTime;
 
@@ -59,7 +58,6 @@ public class KnightScript : MonoBehaviour
         // on verifie si le joueur presse la bar espace pour le saut et que isGrounded touche bien le sol (pour eviter le double saut)
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            AudioManager.instance.PlayClipAt(jumpSound, transform.position);
             isJumping = true;
         }
         animator.SetBool("IsGrounded", isGrounded);
@@ -73,8 +71,7 @@ public class KnightScript : MonoBehaviour
         //animation de course
         animator.SetFloat("Speed", characterVelocity);
 
-
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             animator.SetTrigger("Attack");
         }
