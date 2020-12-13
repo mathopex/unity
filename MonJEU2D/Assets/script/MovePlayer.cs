@@ -11,9 +11,6 @@ public class MovePlayer : MonoBehaviour
     [HideInInspector]
     public bool isClimbing;
 
-    // a supprimé des le jeu terminé
-    public bool isTeleportation = false;
-
 
     //variable float
     [HideInInspector]
@@ -78,12 +75,6 @@ public class MovePlayer : MonoBehaviour
         // animation de grimper
         animator.SetBool("isClimbing", isClimbing);
 
-        // a supprimé le jeu sortie
-        if (Input.GetKeyDown(KeyCode.T) && isTeleportation)
-        {
-            Teleport();
-        }
-
     }
     private void FixedUpdate()
     {
@@ -95,8 +86,6 @@ public class MovePlayer : MonoBehaviour
 
         PlayerMove(horizontalMovement , verticalMovement);
     }
-
- 
 
     void PlayerMove(float _horizontalMovement, float _verticalMovement)
     {
@@ -142,18 +131,10 @@ public class MovePlayer : MonoBehaviour
             spriteRenderer.flipX = true;
         }
     }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
-    }
-
-    // a supprimé des le jeu terminé
-    public void Teleport()
-    {
-
-        transform.position = GameObject.FindGameObjectWithTag("Teleportation").transform.position;
     }
 }
  

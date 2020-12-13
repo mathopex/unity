@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6148069578941789450}
   - component: {fileID: 6148069578941789493}
   - component: {fileID: 6148069578941789454}
-  - component: {fileID: 6148069578941789448}
   - component: {fileID: 6148069578941789492}
   - component: {fileID: 6148069578941789449}
   - component: {fileID: 6148069578941789495}
@@ -135,19 +134,6 @@ MonoBehaviour:
   graphics: {fileID: 6148069578941789450}
   hitSound: {fileID: 8300000, guid: f3f9543f0ed77a646b3b6303359b424e, type: 3}
   isInvincible: 0
---- !u!114 &6148069578941789448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6148069578941789494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c8d9c95e01537e4d80f95e02f37b44b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  piece: 0
 --- !u!50 &6148069578941789492
 Rigidbody2D:
   serializedVersion: 4

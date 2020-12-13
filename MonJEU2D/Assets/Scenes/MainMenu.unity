@@ -1605,6 +1605,7 @@ MonoBehaviour:
   settingsWindows: {fileID: 2024879735}
   continueGame: {fileID: 1604840707}
   levelToLoad: LevelSelect
+  levelConitnue: 1
 --- !u!1 &1788496249
 GameObject:
   m_ObjectHideFlags: 0

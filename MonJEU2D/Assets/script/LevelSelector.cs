@@ -6,13 +6,26 @@ using UnityEngine.UI;
 public class LevelSelector : MonoBehaviour
 {
     public Button[] levelButton;
-   
 
+    public int levelReach;
 
-    private void Start()
+    public static LevelSelector instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("il y a plus d'un instance de LevelSelector dans cette scene");
+            return;
+        }
+
+        instance = this;
+    }
+
+        private void Start()
     {
 
-        int levelReach = PlayerPrefs.GetInt("levelReach", 1);
+        levelReach = PlayerPrefs.GetInt("levelReach", 0);
 
         for (int i = 0; i < levelButton.Length ; i++)
         {

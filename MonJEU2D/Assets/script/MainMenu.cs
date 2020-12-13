@@ -10,30 +10,27 @@ public class MainMenu : MonoBehaviour
     public Button continueGame;
 
     public string levelToLoad;
-    private int teste;
+    public int levelConitnue;
    
      private void Start()
     {
-        teste = PlayerPrefs.GetInt("levelBuild");
-        
-        if (teste == 0)
-        {
+        levelConitnue = PlayerPrefs.GetInt("levelBuild");
+
+        //levelConitnue = LevelSelector.instance.levelReach;
+       
             continueGame.interactable = false;
-        }
-        else
-        {
-            continueGame.interactable = true;
-        }
+       
     }
     public void NewGame()
     {
-        SceneManager.LoadScene(3);
+
+        SceneManager.LoadScene(1);
     }
 
     public void ContinueGame()
     {
     
-            SceneManager.LoadScene(teste); 
+            SceneManager.LoadScene(levelConitnue); 
         
     }
 
