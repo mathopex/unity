@@ -14,16 +14,25 @@ public class MainMenu : MonoBehaviour
    
      private void Start()
     {
-        levelConitnue = PlayerPrefs.GetInt("levelBuild");
+        levelConitnue = PlayerPrefs.GetInt("idCurrentScene");
 
         //levelConitnue = LevelSelector.instance.levelReach;
-       
+        if (levelConitnue < 1)
+        {
             continueGame.interactable = false;
+        }
+        else if(levelConitnue >= 1)
+        {
+            continueGame.interactable = true;
+        }
+
+       
        
     }
     public void NewGame()
     {
 
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene(1);
     }
 

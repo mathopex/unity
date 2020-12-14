@@ -10241,6 +10241,11 @@ PrefabInstance:
       propertyPath: scenneName
       value: SceneVillage
       objectReference: {fileID: 0}
+    - target: {fileID: 8988437194037556778, guid: 20d709d9446dec741973eb5062b01766,
+        type: 3}
+      propertyPath: idCurrentScene
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8988437194037556779, guid: 20d709d9446dec741973eb5062b01766,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10319,6 +10324,11 @@ PrefabInstance:
         type: 3}
       propertyPath: build
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898695677011394246, guid: e1e6210a9da653d478f7879af9162809,
+        type: 3}
+      propertyPath: idCurrentScene
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8967408262063530501, guid: e1e6210a9da653d478f7879af9162809,
         type: 3}

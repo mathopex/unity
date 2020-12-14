@@ -32,15 +32,15 @@ public class LoadSaveData : MonoBehaviour
     {
         PlayerPrefs.SetInt("coins", Inventory.instance.coinsCount);
         PlayerPrefs.SetInt("levelReach",CurrentSceneManager.instance.levelToUnlock);
-        PlayerPrefs.SetInt("LevelBuild", LoadSpecificScene.instance.sceneBuild);
+        PlayerPrefs.SetInt("idCurrentScene", LoadSpecificScene.instance.idCurrentScene);
 
         if (CurrentSceneManager.instance.levelToUnlock > PlayerPrefs.GetInt("levelReach", 1))
         {
             PlayerPrefs.SetInt("levelReach", CurrentSceneManager.instance.levelToUnlock);
         }
-        if(LoadSpecificScene.instance.sceneBuild > PlayerPrefs.GetInt("levelBuild", 3))
+        if(LoadSpecificScene.instance.idCurrentScene > PlayerPrefs.GetInt("idCurrentScene", 0))
         {
-            PlayerPrefs.SetInt("levelBuild", LoadSpecificScene.instance.sceneBuild);
+            PlayerPrefs.SetInt("idCurrentScene", LoadSpecificScene.instance.idCurrentScene);
         }
        // PlayerPrefs.SetInt("currentHeal", PlayerHealth.instance.currentHealth);
     }

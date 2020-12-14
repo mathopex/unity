@@ -16,7 +16,7 @@ public class LoadSpecificScene : MonoBehaviour
     private MovePlayer movePlayer;
     private bool isDoor;
     public static LoadSpecificScene instance;
-    public int sceneBuild;
+    public int idCurrentScene;
 
 
     private void Awake()
