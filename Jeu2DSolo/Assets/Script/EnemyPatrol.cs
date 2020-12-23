@@ -27,12 +27,12 @@ public class EnemyPatrol : MonoBehaviour
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
-        // si l'enemi est quasiment arrivé a sa destination
-        if (Vector3.Distance(transform.position, target.position) < 0.3f)
+        //si l'enemi est quasiment arrivé a sa destination
+        if (vector3.distance(transform.position, target.position) < 0.3f)
         {
-            destPoint = (destPoint + 1) % waypoints.Length;
-            target = waypoints[destPoint];
-            graphics.flipX = !graphics.flipX;
+            destpoint = (destpoint + 1) % waypoints.length;
+            target = waypoints[destpoint];
+            graphics.flipx = !graphics.flipx;
         }
 
 

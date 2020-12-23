@@ -8,7 +8,7 @@ public class KnightScript : MonoBehaviour
     public bool isJumping;
     private bool isGrounded;
     private bool inJump;
-    private bool onAttack;
+   public    bool onAttack;
 
     // a supprimé des le jeu terminé
     public bool isTeleportation = false;
@@ -31,7 +31,7 @@ public class KnightScript : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
-    [SerializeField] AudioClip sndAttack, sndJump, sndHurt, sndDead, sndWin;
+    [SerializeField] AudioClip sndAttack, sndJump, sndHurt, sndDead, sndWin, sndGobelin;
    private  AudioSource audioS;
 
 
@@ -81,11 +81,9 @@ public class KnightScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && isGrounded && !onAttack)
         {
-           
                 onAttack = true;
                 animator.SetTrigger("Attack");
                 audioS.PlayOneShot(sndAttack);
-            
         }
 
     }
@@ -94,11 +92,8 @@ public class KnightScript : MonoBehaviour
         //IsGrouded permet de verifier si le joueur touche bien le sol ou non 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionLayer);
 
-
         PlayerMove(horizontalMovement);
     }
-
-
 
     void PlayerMove(float _horizontalMovement)
     {
@@ -120,7 +115,6 @@ public class KnightScript : MonoBehaviour
 
 
     }
-
     void Flip(float _velocity)
     {
         // si la velocité et supperrieure a 0.1 on desactive le demi-tour  gauche sur l'axe y (positive)
@@ -142,6 +136,28 @@ public class KnightScript : MonoBehaviour
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Gobelin"))
+        {
+            if (onAttack)
+            {
+                Rigidbody2D rbGobelin = collision.gameObject.GetComponent<Rigidbody2D>();
+                rbGobelin.bodyType = RigidbodyType2D.Dynamic;
+                rbGobelin.AddForce(Vector2.up * 6000); 
+                audioS.PlayOneShot(sndGobelin);
+                Destroy(collision.gameObject.transform.parent.gameObject, 0.7f);
+            }
+            else
+            {
+                Vector2 move = collision.transform.position - transform.position;
+                rb.AddForce(move * -300);
+                Hurt();
+            }
+        }
+    }
+
     public void Hurt()
     {
         animator.SetTrigger("Hurt");
@@ -159,7 +175,6 @@ public class KnightScript : MonoBehaviour
         animator.SetTrigger("Dead");
         audioS.PlayOneShot(sndDead);
     }
-
     public void AttackBool()
     {
         onAttack = false;
