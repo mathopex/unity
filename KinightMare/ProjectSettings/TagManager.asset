@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Chevalier
   - Gobelin
+  - mace
   layers:
   - Default
   - TransparentFX

@@ -139,25 +139,43 @@ public class KnightScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("Gobelin"))
+
+        switch (collision.gameObject.tag)
         {
-            if (onAttack)
-            {
-                Rigidbody2D rbGobelin = collision.gameObject.GetComponent<Rigidbody2D>();
-                rbGobelin.bodyType = RigidbodyType2D.Dynamic;
-                rbGobelin.AddForce(Vector2.up * 6000); 
-                audioS.PlayOneShot(sndGobelin);
-                Destroy(collision.gameObject.transform.parent.gameObject, 0.7f);
-            }
-            else
-            {
-                Vector2 move = collision.transform.position - transform.position;
-                rb.AddForce(move * -300);
-                Hurt();
-            }
+
+            case "Gobelin":
+        
+                if (onAttack)
+                {
+                    Rigidbody2D rbGobelin = collision.gameObject.GetComponent<Rigidbody2D>();
+                    rbGobelin.bodyType = RigidbodyType2D.Dynamic;
+                    rbGobelin.AddForce(Vector2.up * 6000); 
+                    audioS.PlayOneShot(sndGobelin);
+                    Destroy(collision.gameObject.transform.parent.gameObject, 0.7f);
+                }
+                else
+                {
+                    PlayerHurtMove(collision);
+                    
+                }
+                break;
+
+            case "mace":
+
+                PlayerHurtMove(collision);
+
+            break;
+
         }
     }
 
+
+    private void PlayerHurtMove (Collision2D collision)
+    {
+        Vector2 move = collision.transform.position - transform.position;
+        rb.AddForce(move.normalized * -500);
+        Hurt();
+    }
     public void Hurt()
     {
         animator.SetTrigger("Hurt");
