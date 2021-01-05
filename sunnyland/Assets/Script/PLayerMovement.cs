@@ -27,6 +27,7 @@ public class PLayerMovement : MonoBehaviour
     private Animator animator;
     public LayerMask layerCollision;
     public Transform groundCheck;
+    public CameraFollow camScript;
 
 
     private Vector3 velocity = Vector3.zero;
@@ -123,6 +124,15 @@ public class PLayerMovement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+    }
+
+    public void Death()
+    {
+        camScript.enabled = false;
+        rb.AddForce(new Vector2(0f, 600f));
+        rb.gravityScale = 7;
+        Destroy(gameObject, 0.7f);
+
     }
 
 }

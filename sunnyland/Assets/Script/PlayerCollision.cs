@@ -5,7 +5,7 @@ public class PlayerCollision : MonoBehaviour
 {
     private Animator animator;
     public bool isInvincible;
-    public float invicibilityTimeAfterHit = 1f;
+    public float invicibilityTimeAfterHit = 1.2f;
 
 
     private void Start()
@@ -25,8 +25,6 @@ public class PlayerCollision : MonoBehaviour
     {
         if (!isInvincible)
         {
-            
-
 
             PlayerInfo.instance.heal -= damage;
 
@@ -41,9 +39,12 @@ public class PlayerCollision : MonoBehaviour
             else if (PlayerInfo.instance.heal == 0)
             {
                 PlayerInfo.instance.vie1.SetActive(false);
+                animator.SetTrigger("Death");
             }
+
+
             isInvincible = true;
-            //StartCoroutine(HandleInvicibilityDelay());
+            StartCoroutine(HandleInvicibilityDelay());
 
         }
     }
@@ -52,7 +53,7 @@ public class PlayerCollision : MonoBehaviour
     // temps d'invincibilité apres des degats
     public IEnumerator HandleInvicibilityDelay()
     {
-        animator.SetBool("Hurt", true);
+        animator.SetBool("Hurt",true);
         gameObject.GetComponent<PLayerMovement>().enabled = false;
 
         //periode d'invincibilité du joueur
