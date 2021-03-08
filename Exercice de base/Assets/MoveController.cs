@@ -1,18 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class MoveController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    public float moveSpeed = .3f;
+    public float rotationSpeed = 8f;
+
     void Update()
     {
         
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Translate(Vector3.forward * moveSpeed);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.Translate(-Vector3.forward * moveSpeed);
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Rotate(Vector3.up * rotationSpeed);
+        }
+
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Rotate(Vector3.up * -rotationSpeed);
+        }
     }
 }
