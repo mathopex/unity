@@ -12,7 +12,7 @@ public class Tank : MonoBehaviour {
 	void Update () 
 	{
 		// Calculer la distance entre les deux tanks
-		float distance = Vector3.Distance(cannon.position, enemy.position);
+	float distance = Vector3.Distance(cannon.position, enemy.position);
 
 		// Calculer le vecteur qui va de notre tank vers le tank ennemi
 		Vector3 dirToEnemy = cannon.position - enemy.position;
@@ -38,7 +38,7 @@ public class Tank : MonoBehaviour {
 		
 		// Calculer la position maximale du tir du tank
 		// cette position sera située à maxDistance du canon, dans l'axe forward du canon
-		Vector3 shootPosition =
+		//sVector3 shootPosition =
 		
 	}
 }
