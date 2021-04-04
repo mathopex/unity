@@ -3,7 +3,32 @@ guid: 1f677fac02e62e145a4b33f989d4c32e
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bleu
+    second: {fileID: 2100000, guid: c89414f2c2067bd458bdd135e4f8e11b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gris
+    second: {fileID: 2100000, guid: cd0a373d6adde3d4faa12079fa78b56b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 73d12e6ee8adad2479cb5cb513e15e0b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tronc
+    second: {fileID: 2100000, guid: c36d56808d67fc54eb72ee840021da9a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vert
+    second: {fileID: 2100000, guid: 04013be62999a8646a21f3eaa4e26a51, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
