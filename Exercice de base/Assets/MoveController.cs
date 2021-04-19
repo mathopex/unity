@@ -4,7 +4,7 @@ using System.Collections;
 public class MoveController : MonoBehaviour
 {
 
-    public float moveSpeed = .3f;
+    public float moveSpeed = 0.3f;
     public float rotationSpeed = 8f;
 
     void Update()
