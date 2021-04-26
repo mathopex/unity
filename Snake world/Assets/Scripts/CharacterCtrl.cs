@@ -14,9 +14,15 @@ public class CharacterCtrl : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero; // dir du mouvement
     public bool isGrounded = false; // le personnage est-il au sol ?
 
+
+    //variable SFX
+
+    public AudioClip[] swordSfx;
+
     //Les Composants
     private CharacterController controller;
     private Animator animator;
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -24,6 +30,7 @@ public class CharacterCtrl : MonoBehaviour
         controller = GetComponent<CharacterController>();
         // on recupère l'animator du personnage
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
    
@@ -31,6 +38,7 @@ public class CharacterCtrl : MonoBehaviour
     {
         DeplacementHero();
         BaseMouvement();
+        Attack();
 
     }
 
@@ -56,9 +64,6 @@ public class CharacterCtrl : MonoBehaviour
        
         //Gestion collision avec le sol
         isGrounded = CollisionFlags.CollidedBelow != 0;
-
-
-
     }
 
     public void DeplacementHero()
@@ -74,8 +79,16 @@ public class CharacterCtrl : MonoBehaviour
          {
             transform.rotation *= Quaternion.Euler(0,-rotation , 0);    
          }
-        
-   
-    }   
+    }
+    
+
+    public void Attack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            audioSource.PlayOneShot(swordSfx[Random.Range(0,3)]);
+            animator.SetTrigger("attack");
+        }
+    }
 }
 
