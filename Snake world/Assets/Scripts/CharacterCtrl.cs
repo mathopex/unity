@@ -80,15 +80,15 @@ public class CharacterCtrl : MonoBehaviour
             transform.rotation *= Quaternion.Euler(0,-rotation , 0);    
          }
     }
-    
 
     public void Attack()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            audioSource.PlayOneShot(swordSfx[Random.Range(0,3)]);
+            audioSource.PlayOneShot(swordSfx[Random.Range(0, 3)]);
             animator.SetTrigger("attack");
         }
     }
 }
+
 

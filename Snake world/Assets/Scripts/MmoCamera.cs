@@ -5,7 +5,7 @@
 public class MmoCamera : MonoBehaviour
 {
     public Transform target;
-    public Rigidbody rigidbody;
+    public Rigidbody rg;
 
     public float targetHeight = 1.7f;
     public float distance = 5.0f;
@@ -46,8 +46,8 @@ public class MmoCamera : MonoBehaviour
         correctedDistance = distance;
 
         // Make the rigid body not change rotation
-        if (rigidbody)
-            rigidbody.freezeRotation = true;
+        if (rg)
+            rg.freezeRotation = true;
     }
 
 

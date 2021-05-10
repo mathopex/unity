@@ -1,36 +1,86 @@
 fileFormatVersion: 2
 guid: 85ba98ac2ac6aa341b8dedce9681adf8
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: bottom_fx
-    100002: Box001
-    100004: Box002
-    100006: Box003
-    100008: captain
-    100010: center_fx
-    100012: Dummy001
-    100014: movement
-    100016: //RootNode
-    100018: top_fx
-    400000: bottom_fx
-    400002: Box001
-    400004: Box002
-    400006: Box003
-    400008: captain
-    400010: center_fx
-    400012: Dummy001
-    400014: movement
-    400016: //RootNode
-    400018: top_fx
-    2100000: 'Material #22'
-    4300000: captain
-    7400000: mr_npc_captain_basic_idle_003
-    9500000: //RootNode
-    13700000: captain
+  serializedVersion: 20101
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: bottom_fx
+  - first:
+      1: 100002
+    second: Box001
+  - first:
+      1: 100004
+    second: Box002
+  - first:
+      1: 100006
+    second: Box003
+  - first:
+      1: 100008
+    second: captain
+  - first:
+      1: 100010
+    second: center_fx
+  - first:
+      1: 100012
+    second: Dummy001
+  - first:
+      1: 100014
+    second: movement
+  - first:
+      1: 100016
+    second: //RootNode
+  - first:
+      1: 100018
+    second: top_fx
+  - first:
+      4: 400000
+    second: bottom_fx
+  - first:
+      4: 400002
+    second: Box001
+  - first:
+      4: 400004
+    second: Box002
+  - first:
+      4: 400006
+    second: Box003
+  - first:
+      4: 400008
+    second: captain
+  - first:
+      4: 400010
+    second: center_fx
+  - first:
+      4: 400012
+    second: Dummy001
+  - first:
+      4: 400014
+    second: movement
+  - first:
+      4: 400016
+    second: //RootNode
+  - first:
+      4: 400018
+    second: top_fx
+  - first:
+      21: 2100000
+    second: Material #22
+  - first:
+      43: 4300000
+    second: captain
+  - first:
+      74: 7400000
+    second: mr_npc_captain_basic_idle_003
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: captain
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -59,6 +109,7 @@ ModelImporter:
     - serializedVersion: 16
       name: mr_npc_captain_basic_idle_003
       takeName: Take 001
+      internalID: 0
       firstFrame: 0
       lastFrame: 56
       wrapMode: 0
@@ -67,7 +118,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -91,25 +142,32 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -118,10 +176,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -131,13 +189,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
