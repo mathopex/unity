@@ -16,7 +16,7 @@ public class MapGeneratorEditor : Editor
             //si mapGen et modifier auto Update de la map
             if (MapGen.autoUpdate)
             {
-                MapGen.GenerateMap();
+                MapGen.DrawMapInEditor();
             }
                     
         }
@@ -24,7 +24,7 @@ public class MapGeneratorEditor : Editor
         //creation d'un bouton generate dans l'inspector
         if (GUILayout.Button("Generate"))
         {
-            MapGen.GenerateMap();
+            MapGen.DrawMapInEditor();
         }
     }
 }

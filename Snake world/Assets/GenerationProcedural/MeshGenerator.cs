@@ -4,8 +4,9 @@ using UnityEngine;
 
 public static class MeshGenerator
 {
-    public static MeshData GenerateTerrainMesh(float[,] heightmap, float heightMultiplier)
+    public static MeshData GenerateTerrainMesh(float[,] heightmap, float heightMultiplier, AnimationCurve _heightCurve, int levelOfdetail)
     {
+        AnimationCurve heightCurve = new AnimationCurve(_heightCurve.keys);
         // on recupère la largeur et la longueur de la map
         int width = heightmap.GetLength(0);
         int height = heightmap.GetLength(1);
@@ -13,16 +14,40 @@ public static class MeshGenerator
         float topLeftX = (width - 1) / -2f;
         float topleftZ = (width - 1) / 2f;
 
-        MeshData meshData = new MeshData(width, height);
+        int meshSimplificationIncrement = levelOfdetail * 2;
+
+
+        //on verifi si levelOfdetail est egale a 0 
+        //methode terniOperator meshSimplificationIncrement = (levelOfDetail == 0)?1:levelOfDetail *2
+        if (levelOfdetail == 0)
+        {
+            meshSimplificationIncrement = 1;
+        }
+        else
+        {
+            meshSimplificationIncrement = levelOfdetail * 2;
+        }
+
+
+        int verticesPerLine = (width - 1) / meshSimplificationIncrement + 1;
+
+
+        MeshData meshData = new MeshData(verticesPerLine, verticesPerLine);
 
         int vertexIndex = 0;
 
-        for (int y = 0; y < height; y++)
+        
+
+
+        for (int y = 0; y < height; y += meshSimplificationIncrement)
         {
-            for (int x = 0; x < width; x++)
+            for (int x = 0; x < width; x += meshSimplificationIncrement)
             {
-                //on stock les information des vertices
-                meshData.vertices[vertexIndex] = new Vector3(topLeftX + x, heightmap[x, y] * heightMultiplier, topleftZ - y);
+                 
+                    //on stock les information des vertices
+                    meshData.vertices[vertexIndex] = new Vector3(topLeftX + x, heightCurve.Evaluate(heightmap[x, y]) * heightMultiplier, topleftZ - y);
+                
+       
                 //on localise le vertex et on lui envois un pourcentage entre 0 et 1
                 meshData.uvs[vertexIndex] = new Vector2(x / (float)width, y / (float)height);
 
@@ -34,8 +59,8 @@ public static class MeshGenerator
                      vertexIndex = i
                      1er triangle : i (1er sommet) ,  i + width +1 (2eme sommet) , i + width (3eme sommet)
                      2em triangle : i + width + 1 (1er sommet), i (2eme sommet), i + 1 (3eme sommet)*/
-                    meshData.AddTriangle(vertexIndex, vertexIndex + width + 1, vertexIndex + width);// 1er triagnle
-                    meshData.AddTriangle(vertexIndex + width + +1, vertexIndex, vertexIndex + 1); // 2eme triangle
+                    meshData.AddTriangle(vertexIndex, vertexIndex + verticesPerLine + 1, vertexIndex + verticesPerLine);// 1er triagnle
+                    meshData.AddTriangle(vertexIndex + verticesPerLine + +1, vertexIndex, vertexIndex + 1); // 2eme triangle
                 }
                 vertexIndex++;
             }
