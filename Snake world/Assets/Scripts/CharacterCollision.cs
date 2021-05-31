@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 public class CharacterCollision : MonoBehaviour
 {
@@ -13,6 +14,17 @@ public class CharacterCollision : MonoBehaviour
     public GameObject triggerForgeron;
     public GameObject porteVillage;
     public GameObject triggerInstructeur;
+    public GameObject triggerDialogueBoss;
+    public GameObject DialQueteBoss;
+    public GameObject TxtDialBoss;
+
+
+
+    public RectTransform lifebar;
+
+    bool quest = false;
+
+    public int life = 10;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,6 +41,34 @@ public class CharacterCollision : MonoBehaviour
 
             StartCoroutine("swordActive");
         }
+
+        if (other.gameObject.name == "TriggerDialogueBoss")
+        {
+            if (!quest)
+            {
+                dial.SetActive(true);
+                dialTxt.GetComponent<TextMeshProUGUI>().text = "Le grand golem de pierre nous a volé l'oeil magique qui voi tout, tue les golem et raporte le moi tu auras une belle recompense ";
+            }
+            else
+            {
+                dial.SetActive(true);
+                dialTxt.GetComponent<TextMeshProUGUI>().text = "OHHH, tu as reussi merci, voici ta recompense 10 piece d'or";
+            }
+           
+        }
+
+        if(other.gameObject.name == "oeil")
+        {
+            quest = true;
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.name == "Hand_L")
+        {
+            life--;
+            print(life);
+            lifebar.localScale = new Vector3(lifebar.localScale.x - 0.1f, lifebar.localScale.y, lifebar.localScale.z);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -39,14 +79,20 @@ public class CharacterCollision : MonoBehaviour
             triggerInstructeur.SetActive(false);
             triggerForgeron.SetActive(true);
         }
+        if(other.gameObject.name == "TriggerDialogueBoss")
+        {
+            dial.SetActive(false);
+            
+        }
 
         if (other.gameObject.name == "TriggerDialogueForgeron")
         {
             dialForgeron.SetActive(false);
             triggerForgeron.SetActive(false);
             porteVillage.SetActive(false);
-
         }
+
+        
     }
 
     IEnumerator swordActive()

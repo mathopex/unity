@@ -24,6 +24,8 @@ public class MonsterMgr : MonoBehaviour
             {
                 life = 0;
                 anim.SetTrigger("died");
+                GameObject loot = Instantiate(GameManager.Instance.oeil, transform.position, Quaternion.identity);
+                loot.name = "oeil";
                 CapsuleCollider col = GetComponent<CapsuleCollider>();
                 col.enabled = false;
                 Destroy(this.gameObject, 3);

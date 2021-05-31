@@ -9,32 +9,25 @@ public class EndlessTerrain : MonoBehaviour
     static MapGenerator mapGenerator;
     public Material mapMaterial;
 
-    Dictionary<Vector2, TerrainChunk> terrainChunkDictionnary = new Dictionary<Vector2, TerrainChunk>();
+    Dictionary<Vector2, TerrainChunk> terrainChunkDictionnary = new Dictionary<Vector2, TerrainChunk>(3);
     //liste des terrainChunk creer a la derniere frame
-    List<TerrainChunk> terrainChunkVisibleLastUpdate = new List<TerrainChunk>();
+    List<TerrainChunk> terrainChunkVisibleLastUpdate = new List<TerrainChunk>(3);
 
     public static Vector2 viewerposition;
     int chunkSize;
     int chunkVisibleInViewDst;
+    int lenght = 0;
 
-
+   
 
     private void Start()
     {
-
         mapGenerator = FindObjectOfType<MapGenerator>();
         // chunkSize = 240 /240
         chunkSize = MapGenerator.mapChunkSize - 1;
         // on calcule la visibilé du joueur 
         chunkVisibleInViewDst = Mathf.RoundToInt(maxViewDst / chunkSize);
-
-        int lenght = 1;
-        for (int i = 0; i < lenght; i++)
-        {
-           
-        }
-
-     }
+    }
 
     private void Update()
     {
@@ -52,7 +45,7 @@ public class EndlessTerrain : MonoBehaviour
         }
         terrainChunkVisibleLastUpdate.Clear();
 
-        // on recupère les chunks(plane) a coté du joueur au coordonné x/y le joueur et considéré au coordonné 0;0 on arrondi a l'in sup
+        // on recupère les chunks(plane) a coté du joueur au coordonné x/y le joueur et considéré au coordonné 0;0 on arrondi a l'int sup
         int currentChunkCoordX = Mathf.RoundToInt(viewerposition.x / chunkSize);
         int currentChunkCoordY = Mathf.RoundToInt(viewerposition.y / chunkSize);
 
@@ -77,10 +70,10 @@ public class EndlessTerrain : MonoBehaviour
                         terrainChunkVisibleLastUpdate.Add(terrainChunkDictionnary[viewedChunkCoord]);
                     }
                 }
+                
                 else //si il existe pas dans le dico
                 {
                     terrainChunkDictionnary.Add(viewedChunkCoord, new TerrainChunk(viewedChunkCoord,chunkSize, transform, mapMaterial));
-     
                 }
 
             }
@@ -101,19 +94,16 @@ public class EndlessTerrain : MonoBehaviour
         // constructeur
         public TerrainChunk(Vector2 coord, int size, Transform parent, Material material)
         {
+
             int lenght = 0;
-            while (lenght <= 1)
-            {
                 position = coord * size;
                 bounds = new Bounds(position, Vector2.one * size);
                 Vector3 positionV3 = new Vector3(position.x, 0, position.y);
 
-            
+            while (lenght <= 4)
+            {
                 // creation du plane (objet de base de unity
                 meshObject = new GameObject("TerrainChunk");
-                lenght++;
-
-
                 meshRenderer = meshObject.AddComponent<MeshRenderer>();
                 meshFilter = meshObject.AddComponent<MeshFilter>();
                 meshRenderer.material = material;
@@ -123,6 +113,7 @@ public class EndlessTerrain : MonoBehaviour
 
                 meshObject.transform.parent = parent;
                 lenght++;
+
             }
                 SetVisible(false);
 
