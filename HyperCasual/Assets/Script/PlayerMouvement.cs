@@ -16,8 +16,7 @@ public class PlayerMouvement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public Transform groundCheck;
     public LayerMask collisionLayer;
-    private Animator animator;
-
+    public Animator animator;
 
     private void Start()
     {
@@ -29,6 +28,15 @@ public class PlayerMouvement : MonoBehaviour
 
     private void Update()
     {
+
+        //si le joueur est mort on desactive les mouvements
+        if (PlayerDeath.instance.isDie)
+        {
+            GetComponent<PlayerMouvement>().enabled = false;
+
+        }
+
+
         //deplacement joueur avec les touches sur l'axe horizontal (fleche direction et/ou Q et D)
         horizontalMouvement = Input.GetAxis("Horizontal") * moveSpeed * Time.fixedDeltaTime;
 
@@ -77,12 +85,12 @@ public class PlayerMouvement : MonoBehaviour
            
         }
     }
-
+    /*
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
-    }
+    }*/
 
     private void Flip(float _velocity)
     {

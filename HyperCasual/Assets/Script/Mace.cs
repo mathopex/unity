@@ -14,11 +14,12 @@ public class Mace : MonoBehaviour
     private bool attacking;
     public Vector3 originPoint;
 
-    private Rigidbody2D rb;
+    //private Rigidbody2D rb;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
+        
 
        
     }
@@ -45,7 +46,7 @@ public class Mace : MonoBehaviour
 
     private void CheckForPlayer()
     {
-        Debug.DrawRay(transform.position, Vector2.down * range, Color.red);
+        //Debug.DrawRay(transform.position, Vector2.down * range, Color.red);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down , range, playerLayer);
 
         if (hit.collider != null && !attacking)
@@ -64,7 +65,6 @@ public class Mace : MonoBehaviour
         
         attacking = false;
         destination = transform.up * range;
-        Debug.Log("je suis la");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -72,12 +72,14 @@ public class Mace : MonoBehaviour
         if(collision.transform.CompareTag("Player"))
         {
             Debug.Log("je touche le joueur");
-            rb.bodyType = RigidbodyType2D.Kinematic;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().RemoveHeart(1);
+            PlayerDeath.instance.Die();
             destination = transform.up * range;
             Debug.Log(" et je remonte");
             range = 1;
             
         }
+
         Stop();
     }
 }

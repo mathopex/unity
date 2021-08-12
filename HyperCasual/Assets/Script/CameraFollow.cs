@@ -14,7 +14,15 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
+        //si le joueur est mort on desective le script de camera follow
+        if (PlayerDeath.instance.isDie)
+        {
+            GetComponent<CameraFollow>().enabled = false;
+            
+        }
+
         transform.position = Vector3.SmoothDamp(transform.position, player.transform.position + posOffSet, ref velocity, timeOffSet);
+
     }
 
 

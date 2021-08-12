@@ -6,6 +6,7 @@ TagManager:
   tags:
   - saw
   - Mace
+  - Canvas
   layers:
   - Default
   - TransparentFX
