@@ -13,16 +13,10 @@ public class Mace : MonoBehaviour
     public float checkTimer;
     private bool attacking;
     public Vector3 originPoint;
+    public GameObject pupilleFixe;
+    public GameObject pupilleMobile;
 
-    //private Rigidbody2D rb;
-
-    private void Start()
-    {
-        //rb = GetComponent<Rigidbody2D>();
-        
-
-       
-    }
+ 
     private void OnEnable()
     {
         Stop();
@@ -51,10 +45,15 @@ public class Mace : MonoBehaviour
 
         if (hit.collider != null && !attacking)
         {
-            
+
+            pupilleMobile.GetComponent<Animator>().enabled = false;
+
+            pupilleMobile.SetActive(false);
+            pupilleFixe.SetActive(true);
             attacking = true;
             destination = -transform.up * range;
             checkTimer = 0;
+           
 
         }
             
@@ -65,6 +64,10 @@ public class Mace : MonoBehaviour
         
         attacking = false;
         destination = transform.up * range;
+        pupilleMobile.GetComponent<Animator>().enabled = true;
+        pupilleMobile.SetActive(true);
+        pupilleFixe.SetActive(false);
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

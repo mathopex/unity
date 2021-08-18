@@ -6,10 +6,17 @@ public class scripAnimationPaupiere : MonoBehaviour
 {
     public SpriteRenderer paupierInfGauche;
     public SpriteRenderer paupierInfDroite;
+    //public Animator anime;
   
 
-   public void ActrivePaupiere()
+
+     private void start()
     {
+        //anime = GetComponent<Animator>();
+    }
+    public void ActrivePaupiere()
+    {
+
         paupierInfDroite.enabled = true;
         paupierInfGauche.enabled = true;
     }
