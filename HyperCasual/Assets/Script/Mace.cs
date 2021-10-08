@@ -6,7 +6,7 @@ public class Mace : MonoBehaviour
 {
         
     public float speed;
-    public float range;
+    private float range = 10;
     private float checkDelay;
     public LayerMask playerLayer;
     private Vector3 destination;
@@ -16,7 +16,20 @@ public class Mace : MonoBehaviour
     public GameObject pupilleFixe;
     public GameObject pupilleMobile;
 
- 
+    public Transform groundCheck;
+    public float groundCheckRadius = 0.2f;
+    public LayerMask collisionLayer;
+    public bool isGrounded;
+    private Transform target;
+    public Transform[] waypoints;
+
+
+    private void Start()
+    { 
+        target = waypoints[0];
+        collisionLayer = 0;
+    }
+
     private void OnEnable()
     {
         Stop();
@@ -24,7 +37,7 @@ public class Mace : MonoBehaviour
 
     private void Update()
     {
-           
+
         if (attacking)
             transform.Translate(destination * Time.deltaTime * speed);
 
@@ -35,6 +48,29 @@ public class Mace : MonoBehaviour
             if (checkTimer > checkDelay)
                 CheckForPlayer();
         }
+
+        if (isGrounded)
+        {
+            Vector3 dir = target.position - transform.position;
+            transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+
+            //on met le layermask a everything
+            collisionLayer = ~0;
+        }
+
+        if (Vector3.Distance(transform.position, target.position) < 0.3f)
+        {
+            //nothing
+            collisionLayer = 0;
+            range = 10;
+            
+        } 
+        
+    }
+
+    private void FixedUpdate()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius,collisionLayer);
     }
 
 
@@ -47,13 +83,11 @@ public class Mace : MonoBehaviour
         {
 
             pupilleMobile.GetComponent<Animator>().enabled = false;
-
             pupilleMobile.SetActive(false);
             pupilleFixe.SetActive(true);
             attacking = true;
             destination = -transform.up * range;
             checkTimer = 0;
-           
 
         }
             
@@ -63,10 +97,11 @@ public class Mace : MonoBehaviour
     {
         
         attacking = false;
-        destination = transform.up * range;
         pupilleMobile.GetComponent<Animator>().enabled = true;
         pupilleMobile.SetActive(true);
         pupilleFixe.SetActive(false);
+        collisionLayer = 1;
+        range = 0;
 
     }
 
@@ -74,16 +109,21 @@ public class Mace : MonoBehaviour
     {
         if(collision.transform.CompareTag("Player"))
         {
-            Debug.Log("je touche le joueur");
+
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().RemoveHeart(1);
             PlayerDeath.instance.Die();
-            destination = transform.up * range;
-            Debug.Log(" et je remonte");
             range = 1;
             
         }
 
         Stop();
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
 }
 
@@ -92,4 +132,3 @@ public class Mace : MonoBehaviour
 
 
 
-  

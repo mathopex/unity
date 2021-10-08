@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMouvement : MonoBehaviour
 {
-    public float moveSpeed = 1000f;
+    private float moveSpeed = 2000f;
     public bool isJumping;
     public int jumpForce = 330;
     public bool isGrounded;
@@ -12,11 +12,12 @@ public class PlayerMouvement : MonoBehaviour
     private float horizontalMouvement;
 
     private Rigidbody2D rb;
-    private Vector3 velocity = Vector3.zero;
+    public Vector3 velocity = Vector3.zero;
     private SpriteRenderer spriteRenderer;
     public Transform groundCheck;
     public LayerMask collisionLayer;
     public Animator animator;
+
 
     private void Start()
     {
@@ -48,17 +49,17 @@ public class PlayerMouvement : MonoBehaviour
 
         }
 
-        float characterVelocity = Mathf.Abs(rb.velocity.x);
 
         Flip(rb.velocity.x);
+
+       float characterVelocity = Mathf.Abs(rb.velocity.x);
+
+       
 
         animator.SetFloat("Velocity", characterVelocity);
         animator.SetBool("Jumping", isGrounded);
 
-
-
-
-
+      
     }
 
     private void FixedUpdate()
@@ -74,13 +75,13 @@ public class PlayerMouvement : MonoBehaviour
     {
         //deplacement horizontal
         Vector3 targetVelocity = new Vector2(_horizontalMouvement, rb.velocity.y);
-        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, 0.05f);
+
+        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, 0.000000001f);
 
         if (isJumping)
         {
             // saut du joueur
             rb.AddForce(new Vector2(0f, jumpForce));
-            
             isJumping = false;
            
         }

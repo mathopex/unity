@@ -1,4 +1,4 @@
-﻿6 using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Runtime.Serialization;
 

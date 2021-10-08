@@ -24,6 +24,8 @@ public class PlatformScrip : MonoBehaviour
     private void Update()
     {
 
+
+        
         //deplacement entre 2 points
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);

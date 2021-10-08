@@ -10,7 +10,7 @@ public class TrapScript : MonoBehaviour
     public Transform[] waypoints;
     private Transform target;
     private int destPoint = 0;
-    public float rotateSpeed = 1.5f;
+    private float rotateSpeed = 3f;
     private SpriteRenderer spriteRenderer;
 
 

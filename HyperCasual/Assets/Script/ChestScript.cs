@@ -28,6 +28,7 @@ public class ChestScript : MonoBehaviour
         if (isRange)
         {
             animator.SetTrigger("Chest");
+            GameObject.Find("Inventory").GetComponent<AddCoin>().AddCoins(100);
             GetComponent<BoxCollider2D>().enabled = false;
             isRange = false;
         }
