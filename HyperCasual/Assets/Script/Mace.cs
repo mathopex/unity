@@ -63,6 +63,7 @@ public class Mace : MonoBehaviour
             //nothing
             collisionLayer = 0;
             range = 10;
+            isGrounded = false;
             
         } 
         
@@ -109,13 +110,13 @@ public class Mace : MonoBehaviour
     {
         if(collision.transform.CompareTag("Player"))
         {
-
+            
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().RemoveHeart(1);
             PlayerDeath.instance.Die();
-            range = 1;
-            
-        }
+            range = 0;
+            isGrounded = true;
 
+        }
         Stop();
     }
 
