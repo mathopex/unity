@@ -58,12 +58,12 @@ public class TrapScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //detecttion de trigger
         if (collision.CompareTag("Player"))
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().RemoveHeart(1);
 
             PlayerDeath.instance.Die();
-
 
         }
     }

@@ -94,6 +94,7 @@ public class Mace : MonoBehaviour
             
     }
        
+    //focntion de reset si le piege touche pas le joeur
     private void Stop()
     {
         
@@ -108,6 +109,7 @@ public class Mace : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // en cas de collision avec le joueur
         if(collision.transform.CompareTag("Player"))
         {
             
@@ -117,6 +119,7 @@ public class Mace : MonoBehaviour
             isGrounded = true;
 
         }
+
         Stop();
     }
 

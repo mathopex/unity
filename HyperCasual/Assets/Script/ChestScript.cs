@@ -15,6 +15,7 @@ public class ChestScript : MonoBehaviour
 
     private void Update()
     {
+        //appuyer sur F
         if (Input.GetKeyDown(KeyCode.F))
         {
             Chest();
@@ -25,12 +26,14 @@ public class ChestScript : MonoBehaviour
 
     private void Chest()
     {
+        //si le joueur est a portez 
         if (isRange)
         {
             animator.SetTrigger("Chest");
             GameObject.Find("Inventory").GetComponent<AddCoin>().AddCoins(100);
             GetComponent<BoxCollider2D>().enabled = false;
             isRange = false;
+            Destroy(GetComponent<BoxCollider2D>());
         }
     }
 
@@ -39,7 +42,7 @@ public class ChestScript : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isRange = true;
-        }     
+        }
      
     }
 }

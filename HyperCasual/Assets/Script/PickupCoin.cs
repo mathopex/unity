@@ -10,6 +10,7 @@ public class PickupCoin : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //ajout des pieces
         if (collision.transform.CompareTag("Player"))
         {
 
