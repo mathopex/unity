@@ -25,6 +25,7 @@ public class PlatformScrip : MonoBehaviour
     {
 
 
+
         
         //deplacement entre 2 points
         Vector3 dir = target.position - transform.position;

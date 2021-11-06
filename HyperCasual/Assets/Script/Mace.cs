@@ -7,7 +7,7 @@ public class Mace : MonoBehaviour
         
     public float speed;
     private float range = 10;
-    private float checkDelay;
+    public float checkDelay = 1f;
     public LayerMask playerLayer;
     private Vector3 destination;
     public float checkTimer;
