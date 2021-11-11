@@ -15,7 +15,6 @@ public class ChestRedScript : MonoBehaviour
         animator = GetComponent<Animator>();
 
         int childcoint = GameObject.Find("CoinMgr").transform.childCount;
-        Debug.Log(childcoint / 2);
     }
 
 
