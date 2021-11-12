@@ -15,10 +15,27 @@ public class AideMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+         //si il est deja actif on le desactive
+        if (menuAide.activeSelf)
         {
-            menuAide.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                menuAide.SetActive(false);
+            }
+
         }
+        else
+        {
+            //si il est pas actif on l'active 
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                menuAide.SetActive(true);
+            }
+
+        }
+
+       
+
     }
 
     private IEnumerator LoadMenuAide()
@@ -35,4 +52,7 @@ public class AideMenu : MonoBehaviour
     {
         menuAide.SetActive(false);
     }
+
+
+ 
 }

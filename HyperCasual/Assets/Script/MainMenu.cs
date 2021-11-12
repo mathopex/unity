@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject menuAide;
-    public GameObject boutonClose;
+
+    public GameObject gameManager;
+    public GameObject panelSettings;
     
     public void ButtonStart()
     {
@@ -14,6 +15,23 @@ public class MainMenu : MonoBehaviour
     }
 
 
- 
+    public void ActiverMenuAide()
+    {
+        gameManager.GetComponent<AideMenu>().enabled = false;
+
+    }
+
+    public void OuvrePanel()
+    {
+        panelSettings.SetActive(true);
+    }
+
+    public void ClosePanel()
+    {
+        panelSettings.SetActive(false);
+    }
+
+
+
 
 }
