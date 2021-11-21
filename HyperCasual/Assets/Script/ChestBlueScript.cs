@@ -40,7 +40,7 @@ public class ChestBlueScript : MonoBehaviour
             int random = Random.Range(100, 501);
             //instancie la popup du nombre de pièce
             animator.SetTrigger("Chest");
-            GameObject.Find("Inventory").GetComponent<AddStar>().AddStars(1);
+            GameObject.Find("Inventory").GetComponent<Inventory>().AddStars(1);
             GeneractionGameObject(ancre.transform.position, 1);
             GeneractionImage(image.transform.position);
             GetComponent<BoxCollider2D>().enabled = false;

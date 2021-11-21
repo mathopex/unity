@@ -8,10 +8,29 @@ public class MainMenu : MonoBehaviour
 
     public GameObject gameManager;
     public GameObject panelSettings;
-    
+
+
+    public static MainMenu instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("il y a plus d'un instance de CurrentSceneManager dans cette scene");
+            return;
+        }
+
+        instance = this;
+
+ 
+
+    }
+
+
     public void ButtonStart()
     {
         SceneManager.LoadScene("Level1");
+       
     }
 
 

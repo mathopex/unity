@@ -14,7 +14,7 @@ public class ChestRedScript : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        int childcoint = GameObject.Find("CoinMgr").transform.childCount;
+        //int childcoint = GameObject.Find("CoinMgr").transform.childCount;
     }
 
 
@@ -37,7 +37,7 @@ public class ChestRedScript : MonoBehaviour
             int random = Random.Range(100, 501);
             //instancie la popup du nombre de pièce
             animator.SetTrigger("Chest");
-            GameObject.Find("Inventory").GetComponent<AddCoin>().AddCoins(random);
+            GameObject.Find("Inventory").GetComponent<Inventory>().AddCoins(random);
             GeneractionGameObject(ancre.transform.position, random);
             GeneractionImage(image.transform.position);
             GetComponent<BoxCollider2D>().enabled = false;

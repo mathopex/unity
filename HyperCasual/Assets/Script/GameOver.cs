@@ -7,6 +7,7 @@ public class GameOver : MonoBehaviour
 {
 
     public GameObject gameOver;
+    public GameObject gameManager;
 
 
     public static GameOver instance;
@@ -23,13 +24,19 @@ public class GameOver : MonoBehaviour
         instance = this;
     }
 
-    private void Update()
+
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            gameOver.SetActive(true);
-        }
+        //Debug.Log(SceneManager.GetActiveScene().buildIndex);
     }
+
+
+    public void OpenPlayerDeath()
+    {
+        
+            gameOver.SetActive(true);
+       
+    } 
 
 
     public void MainMenu() 
@@ -40,6 +47,8 @@ public class GameOver : MonoBehaviour
 
    public void Retry()
     {
+
+        
         //on recherche le scene du joueur
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
@@ -47,7 +56,9 @@ public class GameOver : MonoBehaviour
         PlayerDeath.instance.Respawn();
 
         //on desactive le menu GameOver
-        gameOver.SetActive(false);
+        //gameOver.SetActive(false);
+        
+        
     }
 
 

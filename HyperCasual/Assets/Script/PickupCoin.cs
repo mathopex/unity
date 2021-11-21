@@ -14,7 +14,7 @@ public class PickupCoin : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
 
-           GameObject.Find("Inventory").GetComponent<AddCoin>().AddCoins(1);
+           GameObject.Find("Inventory").GetComponent<Inventory>().AddCoins(1);
             Destroy(gameObject);
 
             

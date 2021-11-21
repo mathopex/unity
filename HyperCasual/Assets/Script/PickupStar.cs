@@ -9,7 +9,7 @@ public class PickupStar : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
 
-            GameObject.Find("Inventory").GetComponent<AddStar>().AddStars(1);
+            GameObject.Find("Inventory").GetComponent<Inventory>().AddStars(1);
             Destroy(gameObject);
         }
     }

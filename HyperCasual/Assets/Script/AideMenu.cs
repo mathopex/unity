@@ -7,43 +7,40 @@ public class AideMenu : MonoBehaviour
     public GameObject menuAide;
     public GameObject boutonClose;
 
+    public static AideMenu instance;
 
-    private void Start()
+    private void Awake()
     {
-        StartCoroutine(LoadMenuAide());
+        if(instance != null)
+        {
+            Debug.Log("il y a plus d'une instance de aideMenu dans la scene");
+        }
+
+        instance = this;
+
+        
     }
 
-    void Update()
+    public void OpenAideMenu()
     {
-         //si il est deja actif on le desactive
-        if (menuAide.activeSelf)
+        //si le la sauvegarde du tuto et diffrente de 1 on deseactive le bouton fermer
+        if(PlayerPrefs.GetInt("tuto") !=1)
         {
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                menuAide.SetActive(false);
-            }
-
+            boutonClose.SetActive(false);
         }
-        else
-        {
-            //si il est pas actif on l'active 
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                menuAide.SetActive(true);
-            }
-
-        }
-
-       
-
+  
+            StartCoroutine(LoadMenuAide());
+        
     }
 
     private IEnumerator LoadMenuAide()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(.5f);
         menuAide.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
         boutonClose.SetActive(true);
+       //a la fin du tuto on sauvegarde le fait que le joueur est vue au moins 1 fois le tuto
+        PlayerPrefs.SetInt("tuto", 1);
 
     }
 
@@ -52,7 +49,6 @@ public class AideMenu : MonoBehaviour
     {
         menuAide.SetActive(false);
     }
-
 
  
 }

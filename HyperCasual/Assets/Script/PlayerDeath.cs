@@ -45,8 +45,9 @@ public class PlayerDeath : MonoBehaviour
             GetComponent<Rigidbody2D>().simulated = false;
             GetComponent<CircleCollider2D>().enabled = false;
             GetComponent<Animator>().SetTrigger("Death");
-           
-            GameOver.instance.gameOver.SetActive(true);
+
+            //GameOver.instance.gameOver.SetActive(true);
+            GameOver.instance.OpenPlayerDeath();
         }
 
     }
@@ -66,6 +67,7 @@ public class PlayerDeath : MonoBehaviour
 
    private IEnumerator Resp()
     {
+        //attend 0.25s avant de respawn
         yield return new WaitForSeconds(0.25f);
         Respawn();
 

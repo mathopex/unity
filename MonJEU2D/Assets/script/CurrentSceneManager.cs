@@ -23,5 +23,6 @@ public class CurrentSceneManager : MonoBehaviour
         instance = this;
 
         respawnPoint = GameObject.FindGameObjectWithTag("Player").transform.position;
+
     }
 }

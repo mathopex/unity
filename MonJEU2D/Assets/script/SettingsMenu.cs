@@ -14,7 +14,7 @@ public class SettingsMenu : MonoBehaviour
     public Slider musicSlider;
     public Slider soundSlider;
 
-    public void Start()
+    private void Start()
     {
 
         audioMixer.GetFloat("Musique", out float musicValueForSlider);
@@ -46,6 +46,7 @@ public class SettingsMenu : MonoBehaviour
             }
         }
 
+        
         //ajout des resolutions dans le menu deroulant
         resolutionDropdown.AddOptions(option);
         //on selectionne la resolution du joueur
@@ -55,6 +56,7 @@ public class SettingsMenu : MonoBehaviour
 
         Screen.fullScreen = true;
 
+   
     }
 
     // permet la modification du son in game
