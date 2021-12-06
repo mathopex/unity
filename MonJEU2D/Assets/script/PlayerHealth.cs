@@ -5,13 +5,9 @@ using System.Runtime.Serialization;
 public class PlayerHealth : MonoBehaviour
 {
 
-    [HideInInspector]
     public int maxHealth = 100;
-    [HideInInspector]
     public int currentHealth;
-    [HideInInspector]
     public float invicibilityTimeAfterHit = 2f;
-    [HideInInspector]
     public float invicibilityFlashDelay = 0.2f;
 
 
@@ -32,10 +28,6 @@ public class PlayerHealth : MonoBehaviour
 
         instance = this;
     }
-
-
-
-
     void Start()
     {
         //initialisation de la barre de vie max
@@ -44,7 +36,6 @@ public class PlayerHealth : MonoBehaviour
        
     }
 
- 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
@@ -54,6 +45,7 @@ public class PlayerHealth : MonoBehaviour
 
         }
     }
+
     public void HealPlayer (int heal)
     {
 
@@ -119,7 +111,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void Respawn()
     {
-        
         MovePlayer.instance.enabled = true;
         MovePlayer.instance.animator.SetTrigger("Respawn");
         MovePlayer.instance.rb.bodyType = RigidbodyType2D.Dynamic;

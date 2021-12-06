@@ -6,10 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour
 {
 
-    public GameObject gameOver;
-    public GameObject gameManager;
-
-
+    public GameObject fond, defaite;
     public static GameOver instance;
 
 
@@ -25,46 +22,23 @@ public class GameOver : MonoBehaviour
     }
 
 
-    private void Start()
-    {
-        //Debug.Log(SceneManager.GetActiveScene().buildIndex);
-    }
-
 
     public void OpenPlayerDeath()
     {
-        
-            gameOver.SetActive(true);
+        fond.SetActive(true);
+        StartCoroutine(Fade());
+           
        
-    } 
-
-
-    public void MainMenu() 
-    {
-        SceneManager.LoadScene("MainMenu");
     }
 
 
-   public void Retry()
+    private IEnumerator Fade()
     {
+        yield return new WaitForSeconds(1.12f);
+        defaite.SetActive(true);
+        yield return new WaitForSeconds(3f);
 
-        
-        //on recherche le scene du joueur
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-        //on replace le joueur
-        PlayerDeath.instance.Respawn();
-
-        //on desactive le menu GameOver
-        //gameOver.SetActive(false);
-        
-        
-    }
-
-
-    public void Quit()
-    {
-        Application.Quit();
+        SceneManager.LoadScene(1);
     }
 
 }

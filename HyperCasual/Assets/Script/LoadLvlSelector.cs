@@ -7,6 +7,13 @@ public class LoadLvlSelector : MonoBehaviour
 {
     public GameObject text;
 
+
+    private void Update()
+    {
+        
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -20,6 +27,6 @@ public class LoadLvlSelector : MonoBehaviour
     {
         text.SetActive(true);
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("LevelSelector");
+        SceneManager.LoadScene(1);
     }
 }

@@ -30,14 +30,12 @@ public class ChestBlueScript : MonoBehaviour
         
     }
 
-
-
     private void Chest()
     {
         //si le joueur est a portez 
         if (isRange)
         {
-            int random = Random.Range(100, 501);
+
             //instancie la popup du nombre de pièce
             animator.SetTrigger("Chest");
             GameObject.Find("Inventory").GetComponent<Inventory>().AddStars(1);
@@ -60,8 +58,6 @@ public class ChestBlueScript : MonoBehaviour
         }
      
     }
-
-
 
     public GameObject GeneractionGameObject(Vector3 pos, int starChest)
     {

@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
     {
         heartCount = 3;
         UpdateTextUI();
-
+            
     }
     public void RemoveHeart(int count)
     {

@@ -22,7 +22,7 @@ public class LevelSelector : MonoBehaviour
         instance = this;
     }
 
-        private void Start()
+    private void Start()
     {
 
         levelReach = PlayerPrefs.GetInt("levelReach", 0);

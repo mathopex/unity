@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject player;
     public SpriteRenderer spriteRenderer;
     public Animator animator;
+    private Dialogue dialogue2;
 
 
     public bool isDialogue;
@@ -29,6 +30,11 @@ public class DialogueManager : MonoBehaviour
         instance = this;
 
         sentences = new Queue<string>();
+    }
+
+    private void Start()
+    {
+        
     }
 
     public void StatDialogue(Dialogue dialogue)

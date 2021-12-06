@@ -46,6 +46,7 @@ public class AfficheMenu : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 menuAide.SetActive(false);
+                Time.timeScale = 1;
             }
 
         }
@@ -55,6 +56,7 @@ public class AfficheMenu : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 menuAide.SetActive(true);
+                Time.timeScale = 0;
             }
 
         }
@@ -63,5 +65,6 @@ public class AfficheMenu : MonoBehaviour
     public void Close()
     {
         menuAide.SetActive(false);
+        Time.timeScale = 1;
     }
 }
