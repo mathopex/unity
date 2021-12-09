@@ -28,16 +28,25 @@ public class Victory : MonoBehaviour
 
     public void VictoryScript()
     {
+
+        if (PlayerPrefs.GetInt("quetelvl01") == 1)
+        {
+            SpriteRenderer spriteRenderer3 = GetComponent<SpriteRenderer>();
+            spriteRenderer3.sprite = newSprite;
+            barriere.SetActive(false);
+            porteDeSortie.GetComponent<BoxCollider2D>().enabled = true;
+            return;
+        }
+
         //on reactive le box collider et on desactive les barrière
-        porteDeSortie.GetComponent<BoxCollider2D>().enabled = true;
-        barriere.SetActive(false);
+       
+       
 
         //on change le haut de la porte en jaune pour signifier que le niveau est fini
        SpriteRenderer  spriteRenderer = GetComponent<SpriteRenderer>();
-       spriteRenderer.sprite = newSprite;
-
-       
-
+       spriteRenderer.sprite = newSprite;  
 
     }
+
+    
 }

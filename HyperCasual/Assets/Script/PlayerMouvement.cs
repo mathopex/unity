@@ -10,6 +10,7 @@ public class PlayerMouvement : MonoBehaviour
     public bool isGrounded;
     public float groundCheckRadius = 0.2f;
     private float horizontalMouvement;
+    public float characterVelocity;
 
     private Rigidbody2D rb;
     public Vector3 velocity = Vector3.zero;
@@ -49,16 +50,12 @@ public class PlayerMouvement : MonoBehaviour
 
         }
 
-
         Flip(rb.velocity.x);
 
-       float characterVelocity = Mathf.Abs(rb.velocity.x);
-
-       
+        characterVelocity = Mathf.Abs(rb.velocity.x);
 
         animator.SetFloat("Velocity", characterVelocity);
         animator.SetBool("Jumping", isGrounded);
-
       
     }
 

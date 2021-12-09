@@ -43,6 +43,7 @@ public class SaveScript : MonoBehaviour
         //sauvegarde des pieces et des etoiles gagné a la fin du niveau
         PlayerPrefs.SetInt("coins", GameObject.Find("Inventory").GetComponent<Inventory>().coinCount);
         PlayerPrefs.SetInt("star", GameObject.Find("Inventory").GetComponent<Inventory>().starCount);
+        PlayerPrefs.SetInt("heart", GameObject.Find("Charactere").GetComponent<PlayerHealth>().heartCount);
 
         //sauvegarde de la scene ou ce trouve le joueur au moment ou il quitte le jeu
         PlayerPrefs.SetInt("CurrentScene",buildIndex);

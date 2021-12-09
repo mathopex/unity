@@ -7,7 +7,13 @@ public class Inventory : MonoBehaviour
 {
     public int coinCount,starCount;
     public Text coin, star;
-    
+
+    private void Start()
+    {
+        AddCoins(PlayerPrefs.GetInt("coins"));
+        AddStars(PlayerPrefs.GetInt("star"));
+    }
+
 
 
     public void AddCoins(int coin)

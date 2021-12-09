@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TableauLevel : MonoBehaviour
+public class DebloquelvlScript: MonoBehaviour
 {
     public GameObject[] barriereLvl;
     public GameObject[] hautDePorte;

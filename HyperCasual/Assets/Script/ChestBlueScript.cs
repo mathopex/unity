@@ -11,11 +11,24 @@ public class ChestBlueScript : MonoBehaviour
     public GameObject image;
     public Sprite newSprite;
     public Toggle toggle;
+    public Sprite coffreOuvert;
 
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+
+        if(PlayerPrefs.GetInt("quetelvl01") == 1)
+        {
+            animator.enabled = false;
+
+            toggle.isOn = true;
+            GetComponent<BoxCollider2D>().enabled = false;
+            SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = coffreOuvert;
+            Victory.instance.VictoryScript();
+
+        }
 
     }
 
@@ -39,6 +52,9 @@ public class ChestBlueScript : MonoBehaviour
             //instancie la popup du nombre de pièce
             animator.SetTrigger("Chest");
             GameObject.Find("Inventory").GetComponent<Inventory>().AddStars(1);
+
+            //on sauvegarde le fait que la quête à bien été valider par le joueur
+            PlayerPrefs.SetInt("quetelvl01", 1);
             GeneractionGameObject(ancre.transform.position, 1);
             GeneractionImage(image.transform.position);
             GetComponent<BoxCollider2D>().enabled = false;
