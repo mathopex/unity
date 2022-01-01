@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class PlayerMouvement : MonoBehaviour
 {
-    private float moveSpeed = 2000f;
+    public float moveSpeed = 2000f;
     public bool isJumping;
     public int jumpForce = 330;
     public bool isGrounded;
     public float groundCheckRadius = 0.2f;
-    private float horizontalMouvement;
-    public float characterVelocity;
+    public float horizontalMouvement;
+    private float characterVelocity;
 
     private Rigidbody2D rb;
-    public Vector3 velocity = Vector3.zero;
+    private Vector3 velocity = Vector3.zero;
     private SpriteRenderer spriteRenderer;
     public Transform groundCheck;
     public LayerMask collisionLayer;
     public Animator animator;
+    public AudioClip sound;
 
 
     private void Start()
@@ -46,6 +47,8 @@ public class PlayerMouvement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             isJumping = true;
+
+
             
 
         }
@@ -101,6 +104,14 @@ public class PlayerMouvement : MonoBehaviour
             spriteRenderer.flipX = true;
         }
     }
+
+
+    public void SoundMouvement()
+    {
+        AudioManager.instance.PlayClipAt(sound, transform.position);
+
+    }
+
 
    
 }

@@ -7,6 +7,7 @@ public class PlayerDeath : MonoBehaviour
     public bool isDie;
     public Vector3 reset;
     public static PlayerDeath instance;
+    
 
 
     private void Awake()
@@ -46,7 +47,6 @@ public class PlayerDeath : MonoBehaviour
             GetComponent<CircleCollider2D>().enabled = false;
             GetComponent<Animator>().SetTrigger("Death");
 
-            //GameOver.instance.gameOver.SetActive(true);
             GameOver.instance.OpenPlayerDeath();
         }
 

@@ -8,11 +8,26 @@ using System.Linq;
 public class Settings : MonoBehaviour
 {
     public Dropdown resolutionDropdown;
-
+    public Slider general, effect, menu, musique;
+    public AudioMixer audioMixer;
     Resolution[] resolutions;
+
 
     private void Start()
     {
+
+        audioMixer.GetFloat("Musique", out float musicValueForSlider);
+        musique.value = musicValueForSlider;
+
+        audioMixer.GetFloat("Effet", out float effetValueForSlider);
+        effect.value = effetValueForSlider;
+
+        audioMixer.GetFloat("Master", out float generalValueForSlider);
+        general.value = generalValueForSlider;
+
+        audioMixer.GetFloat("Menu", out float menuValueForSlider);
+        menu.value = menuValueForSlider;
+
         //permet de reup toutes mes resolution, et de filtré celle qui le sont deja
         //est d'en affciher qu'une seule
         resolutions = Screen.resolutions.Select(resolutions => new Resolution
@@ -33,7 +48,6 @@ public class Settings : MonoBehaviour
         {
             string options = resolutions[i].width + "X" + resolutions[i].height;
              option.Add(options);
-             option.Reverse(1, i);
 
             //on verrifi si la resolution cherché et la même que celle du joueur
             if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
@@ -41,10 +55,6 @@ public class Settings : MonoBehaviour
                 currentResolutionInddex = i;
             }
         }
-
-      //inversé l'odre de la liste 
-
-        
 
         //ajout des resolution trouver
         resolutionDropdown.AddOptions(option);
@@ -60,9 +70,26 @@ public class Settings : MonoBehaviour
 
 
 
-    public void SetFullScreen(bool isFullScreen)
+    public void SetEffet(float volume)
     {
-        Screen.fullScreen = isFullScreen;
+        audioMixer.SetFloat("Effet", volume);
+    }
+    public void SetMenu(float volume)
+    {
+        audioMixer.SetFloat("Menu", volume);
+    }
+    public void SetMusique(float volume)
+    {
+        audioMixer.SetFloat("Musique", volume);  
+        Debug.Log("je suis general");
+    }
+
+    public void SetFullScreen()
+    {
+
+     
+ 
+
     }
 
     public void SetResolution(int resolutionIndex)

@@ -7,6 +7,7 @@ public class GameOver : MonoBehaviour
 {
 
     public GameObject fond, defaite;
+    public AudioClip sound;
     public static GameOver instance;
 
 
@@ -36,6 +37,8 @@ public class GameOver : MonoBehaviour
     {
         yield return new WaitForSeconds(1.12f);
         defaite.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        AudioManager.instance.PlayClipAt(sound, transform.position);
         yield return new WaitForSeconds(3f);
 
         SceneManager.LoadScene(1);

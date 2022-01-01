@@ -22,6 +22,7 @@ public class Mace : MonoBehaviour
     public bool isGrounded;
     private Transform target;
     public Transform[] waypoints;
+    public AudioClip sound;
 
 
     private void Start()
@@ -114,6 +115,7 @@ public class Mace : MonoBehaviour
         {
             
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().RemoveHeart(1);
+            AudioManager.instance.PlayClipAt(sound, transform.position);
             PlayerDeath.instance.Die();
             range = 0;
             isGrounded = true;

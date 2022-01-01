@@ -17,7 +17,6 @@ public class DebloquelvlScript: MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(PlayerPrefs.GetInt("levelUnlock"));
         DebloqueLvl();
         HautDePorte();
 

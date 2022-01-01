@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
 
-    public GameObject gameManager;
-    public GameObject panelSettings;
+     public GameObject panelSettings;
 
 
     public static MainMenu instance;
@@ -33,12 +32,6 @@ public class MainMenu : MonoBehaviour
        
     }
 
-
-    public void ActiverMenuAide()
-    {
-        gameManager.GetComponent<AideMenu>().enabled = false;
-
-    }
 
     public void OuvrePanel()
     {

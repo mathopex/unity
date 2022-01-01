@@ -1,24 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public class PickupCoin : MonoBehaviour
 {
-   
-    
+
+    public AudioClip sound;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //ajout des pieces
         if (collision.transform.CompareTag("Player"))
         {
-
-           GameObject.Find("Inventory").GetComponent<Inventory>().AddCoins(1);
-            Destroy(gameObject);
-
-            
-
+            AudioManager.instance.PlayClipAt(sound, transform.position);
+            GameObject.Find("Inventory").GetComponent<Inventory>().AddCoins(1);
+            Destroy(gameObject); 
         }
     }
 }
