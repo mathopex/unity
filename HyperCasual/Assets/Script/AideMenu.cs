@@ -23,7 +23,7 @@ public class AideMenu : MonoBehaviour
 
     public void OpenAideMenu()
     {
-        //si le la sauvegarde du tuto et diffrente de 1 on deseactive le bouton fermer
+        //si le la sauvegarde du tuto et differente de 1 on deseactive le bouton fermer
         if(PlayerPrefs.GetInt("tuto") !=1)
         {
             boutonClose.SetActive(false);

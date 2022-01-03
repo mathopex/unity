@@ -22,6 +22,7 @@ public class SettingsMenu : MonoBehaviour
 
         audioMixer.GetFloat("Sound", out float soundValueForSlider);
         soundSlider.value = soundValueForSlider;
+
         //permet de recupéré toutes les resolutions, et de filtré celle qui sont deja recupéré et d'en affiché qu'une seule
         resolutions = Screen.resolutions.Select(resolution => new Resolution { width = resolution.width, height = resolution.height }).Distinct().ToArray();
         resolutionDropdown.ClearOptions();

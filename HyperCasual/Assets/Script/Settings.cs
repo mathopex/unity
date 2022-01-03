@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -8,25 +7,14 @@ using System.Linq;
 public class Settings : MonoBehaviour
 {
     public Dropdown resolutionDropdown;
-    public Slider general, effect, menu, musique;
-    public AudioMixer audioMixer;
+    public Slider effect, menu, musique;
     Resolution[] resolutions;
+
+    public float volume;
 
 
     private void Start()
     {
-
-        audioMixer.GetFloat("Musique", out float musicValueForSlider);
-        musique.value = musicValueForSlider;
-
-        audioMixer.GetFloat("Effet", out float effetValueForSlider);
-        effect.value = effetValueForSlider;
-
-        audioMixer.GetFloat("Master", out float generalValueForSlider);
-        general.value = generalValueForSlider;
-
-        audioMixer.GetFloat("Menu", out float menuValueForSlider);
-        menu.value = menuValueForSlider;
 
         //permet de reup toutes mes resolution, et de filtré celle qui le sont deja
         //est d'en affciher qu'une seule
@@ -68,28 +56,9 @@ public class Settings : MonoBehaviour
         
     }
 
-
-
-    public void SetEffet(float volume)
-    {
-        audioMixer.SetFloat("Effet", volume);
-    }
-    public void SetMenu(float volume)
-    {
-        audioMixer.SetFloat("Menu", volume);
-    }
-    public void SetMusique(float volume)
-    {
-        audioMixer.SetFloat("Musique", volume);  
-        Debug.Log("je suis general");
-    }
-
     public void SetFullScreen()
     {
-
      
- 
-
     }
 
     public void SetResolution(int resolutionIndex)

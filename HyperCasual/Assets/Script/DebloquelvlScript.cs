@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DebloquelvlScript: MonoBehaviour
 {
@@ -17,6 +15,7 @@ public class DebloquelvlScript: MonoBehaviour
 
     private void Start()
     {
+
         DebloqueLvl();
         HautDePorte();
 

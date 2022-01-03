@@ -4,7 +4,9 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     
-    public AudioMixerGroup soundEffetMixer;
+    public AudioMixerGroup EffetMixer, MusiqueMixer;
+    public AudioSource audioSources;
+
 
     public static AudioManager instance;
 
@@ -32,7 +34,7 @@ public class AudioManager : MonoBehaviour
         audioSource.clip = clip;
 
         //on change l'output de audiosource
-        audioSource.outputAudioMixerGroup = soundEffetMixer;
+        audioSource.outputAudioMixerGroup = EffetMixer;
         //on joue le clip
         audioSource.Play();
         //on detruis tempGo apres la fin du clip

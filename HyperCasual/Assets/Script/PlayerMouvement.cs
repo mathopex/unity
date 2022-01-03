@@ -86,12 +86,12 @@ public class PlayerMouvement : MonoBehaviour
            
         }
     }
-    /*
+    
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
-    }*/
+    }
 
     private void Flip(float _velocity)
     {

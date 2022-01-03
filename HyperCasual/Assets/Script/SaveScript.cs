@@ -36,14 +36,13 @@ public class SaveScript : MonoBehaviour
         }
     }
 
-
     public void SaveData()
     {
-
+        
         //sauvegarde des pieces et des etoiles gagné a la fin du niveau
         PlayerPrefs.SetInt("coins", GameObject.Find("Inventory").GetComponent<Inventory>().coinCount);
         PlayerPrefs.SetInt("star", GameObject.Find("Inventory").GetComponent<Inventory>().starCount);
-        PlayerPrefs.SetInt("heart", GameObject.Find("Charactere").GetComponent<PlayerHealth>().heartCount);
+        SaveHeart();
 
         //sauvegarde de la scene ou ce trouve le joueur au moment ou il quitte le jeu
         PlayerPrefs.SetInt("CurrentScene",buildIndex);
@@ -60,5 +59,12 @@ public class SaveScript : MonoBehaviour
             PlayerPrefs.SetInt("levelUnlock", UnLock);
         }
     }
+
+
+   public void SaveHeart()
+    {
+        PlayerPrefs.SetInt("heart", GameObject.Find("Charactere").GetComponent<PlayerHealth>().heartCount);
+    }
+
 
 }

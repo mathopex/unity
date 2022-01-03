@@ -17,7 +17,15 @@ public class LoadSpecifiqueScene : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.F))
         {
-            SceneLoading();
+            if( PlayerHealth.instance.heartCount == 0)
+            {
+                Debug.Log("Tu n'as pas assez de vie !");
+            }
+            else
+            {
+                SceneLoading();
+            }
+            
         }
     }
 

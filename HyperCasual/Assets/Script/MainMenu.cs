@@ -21,8 +21,6 @@ public class MainMenu : MonoBehaviour
 
         instance = this;
 
- 
-
     }
 
 

@@ -46,7 +46,7 @@ public class PlayerDeath : MonoBehaviour
             GetComponent<Rigidbody2D>().simulated = false;
             GetComponent<CircleCollider2D>().enabled = false;
             GetComponent<Animator>().SetTrigger("Death");
-
+            PlayerPrefs.SetInt("heart", GameObject.Find("Charactere").GetComponent<PlayerHealth>().heartCount);
             GameOver.instance.OpenPlayerDeath();
         }
 

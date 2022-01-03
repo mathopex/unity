@@ -21,7 +21,8 @@ public class UnityHttpClient : IHttpClient
 
     private readonly string ResponseEncoding = Encoding.UTF8.WebName;
 
-    private IEnumerator GetWWW(HttpGetRequest getRequest, WWWResult result)
+        [Obsolete]
+        private IEnumerator GetWWW(HttpGetRequest getRequest, WWWResult result)
     {
         var www = new WWW(getRequest.Address.ToString());
 
